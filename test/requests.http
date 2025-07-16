@@ -1,0 +1,14 @@
+@server = http://localhost:4004
+@auth = Authorization: Basic l.kaup@uniorg.de:test
+
+POST {{server}}/odata/v4/catalog/getBooksForStoreStartingWithLetter
+{{auth}}
+Content-Type: application/json
+x-sysid: RestClient
+x-clntvrsn: Version V12.1.7r / 2025-04-11
+
+{ 
+    "storeId":"LocalStoreService", 
+    "startsWith":"C"
+}
+

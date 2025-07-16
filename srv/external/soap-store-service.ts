@@ -7,10 +7,12 @@ import xmldom from '@xmldom/xmldom';
 export class SoapStoreService extends cds.ApplicationService {
     async init() {
 
-
-        // Reduce stock of ordered books if available stock suffices
+        // Service specific implementation for SOAP store service
+        // this is dummy code to visualize different implementations
         this.on('getAllBooksStartingWith', async req => {
             let { startsWith } = req.data;
+
+            // Mapping for request
             const body: string =
                 `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
     <soapenv:Header/>
@@ -43,8 +45,7 @@ export class SoapStoreService extends cds.ApplicationService {
             );
 
 
-            // I want to test this with differen XMLs
-
+            // Parse the XML response
             const parser = new xmldom.DOMParser();
             // @ts-expect-error misssing Node properties are not needed
             const doc: Document = parser.parseFromString(response.data, 'text/xml')
@@ -67,8 +68,6 @@ export class SoapStoreService extends cds.ApplicationService {
             });
 
             return books.filter(book => book.title?.startsWith(startsWith));
-
-
 
         })
 

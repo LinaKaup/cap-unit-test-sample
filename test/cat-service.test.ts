@@ -1,5 +1,4 @@
 import cds from '@sap/cds'
-import { describe } from 'node:test'
 
 describe('Test CatalogService', () => {
     const { GET, POST, DELETE, PATCH, expect } = cds.test(__dirname + '../../')
